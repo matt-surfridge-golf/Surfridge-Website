@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/30806059/README.md)# Surfridge Golf Co. — static site
+# Surfridge Golf Co. — static site
 
 ## Files
 - `index.html` — home
@@ -10,6 +10,28 @@
 ## Running it
 Open `index.html` in a browser, or serve the folder:
 `python3 -m http.server 8000`
+
+## Course reviews
+
+Reviews are generated, not hand-written. Each one is a JSON file in `_reviews/`:
+
+    _reviews/<slug>.json    ->   reviews/<slug>/index.html   +   a card on reviews.html
+
+To add or edit one, write the JSON and run:
+
+    python3 tools/build_reviews.py          # build
+    python3 tools/build_reviews.py --check  # validate only, write nothing
+
+The script validates every field, sorts by date (newest first), wires up prev/next
+links, and emits schema.org Review JSON-LD for search engines. Never edit anything
+under `reviews/` by hand — it gets overwritten.
+
+The card grid in `reviews.html` lives between the `<!-- REVIEWS:START -->` and
+`<!-- REVIEWS:END -->` markers and is fully managed by the script. Everything else on
+that page is yours to edit.
+
+The `surfridge-add-review` skill wraps this whole workflow if you'd rather just say
+"add a review for Pebble Beach" in Cowork.
 
 ## Things you'll want to change
 
@@ -31,4 +53,3 @@ same sizes so the `srcset` stays accurate.
 
 **Brand colors.** All in `:root` at the top of `css/style.css` — change `--surf-600`
 and `--sunset-600` to re-theme the whole site.
-
