@@ -116,6 +116,7 @@ def e(s) -> str:
 def head(title, description, prefix, image=None, canonical=None) -> str:
     og_image = f'\n<meta property="og:image" content="{e(image)}">' if image else ""
     canon = f'\n<link rel="canonical" href="{e(canonical)}">' if canonical else ""
+    og_url = f'\n<meta property="og:url" content="{e(canonical)}">' if canonical else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,7 +126,7 @@ def head(title, description, prefix, image=None, canonical=None) -> str:
 <meta name="description" content="{e(description)}">
 <meta name="theme-color" content="#14232B">{canon}
 
-<meta property="og:type" content="article">
+<meta property="og:type" content="article">{og_url}
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">{og_image}
 
