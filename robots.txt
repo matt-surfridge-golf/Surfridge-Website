@@ -1,0 +1,8 @@
+# surfridgegolf.com — crawler rules
+# Everything public is open to crawling; only the build tooling is off-limits.
+
+User-agent: *
+Allow: /
+Disallow: /tools/
+
+Sitemap: https://surfridgegolf.com/sitemap.xml
