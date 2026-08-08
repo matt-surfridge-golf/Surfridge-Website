@@ -315,7 +315,8 @@ def build_page(r: dict, prev: dict | None, nxt: dict | None) -> str:
     }, indent=2)
 
     return (
-        head(f'{r["title"]} — Surfridge Golf Co.', desc, P, r["image"])
+        head(f'{r["title"]} — Surfridge Golf Co.', desc, P, r["image"],
+             canonical=f"{SITE_URL}/reviews/{r['slug']}/")
         + header(P)
         + f"""
 <main id="main">
